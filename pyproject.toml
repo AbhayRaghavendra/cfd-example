@@ -1,0 +1,31 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "blastnet-hit-gnn"
+version = "0.1.0"
+description = "JAX graph neural network for BLASTNet HIT turbulence snapshots"
+readme = "README.md"
+requires-python = ">=3.10"
+dependencies = [
+    "certifi>=2024.2.2",
+    "jax>=0.4.20",
+    "numpy>=1.24",
+    "pyvista>=0.48.0",
+]
+
+[project.optional-dependencies]
+test = ["pytest>=8"]
+
+[project.scripts]
+blastnet-hit-download = "cfd_gnn.download:main"
+blastnet-hit-interactive = "cfd_gnn.interactive:main"
+blastnet-hit-train = "cfd_gnn.train:main"
+blastnet-hit-visualize = "cfd_gnn.visualize:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
